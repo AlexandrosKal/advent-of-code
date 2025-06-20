@@ -32,5 +32,10 @@ function solvePart2() {
   console.log("Part 2 Solution: ", integer);
 }
 
+console.time("Part 1");
 solvePart1();
+console.timeEnd("Part 1");
+
+console.time("Part 2");
 solvePart2();
+console.timeEnd("Part 2");
