@@ -1,7 +1,7 @@
 // day 11 solution
 
 import { readInput } from "../utils";
-import path, { parse } from "path";
+import path from "path";
 
 const input = readInput(path.resolve(__dirname, "input.txt"));
 
