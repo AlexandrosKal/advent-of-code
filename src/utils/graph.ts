@@ -1,6 +1,6 @@
 export type GraphNode = {
   id: string;
-  payload: any;
+  payload?: any;
 };
 
 export type Edge = {
@@ -9,7 +9,7 @@ export type Edge = {
   weight?: number;
 };
 
-export default class DirectedGraph {
+export default class Graph {
   protected nodes: Map<string, GraphNode>;
   protected edges: Map<string, Edge>;
   protected adjacencyList: Map<string, { node: GraphNode; weight?: number }[]>;
@@ -101,5 +101,18 @@ export default class DirectedGraph {
     this.getNeighboursAndWeights(nodeId)!.forEach((n) => {
       if (!visited.has(n.node.id)) stack.push(n.node.id);
     });
+  }
+}
+
+export class UndirectedGraph extends Graph {
+  initialize(nodes: GraphNode[], edges: Edge[]) {
+    for (const n of nodes) {
+      this.nodes.set(n.id, n);
+    }
+    for (const edge of edges) {
+      const edgeKey = [edge.from, edge.to].sort().join("<->");
+      this.edges.set(edgeKey, edge);
+      this.updateAdjacencyList(edge);
+    }
   }
 }

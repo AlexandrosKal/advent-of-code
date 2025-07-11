@@ -3,7 +3,7 @@
 import { readInput } from "../utils";
 import { uint16 } from "../utils";
 import path from "path";
-import DirectedGraph, { Edge, GraphNode } from "../utils/graph";
+import Graph, { Edge, GraphNode } from "../utils/graph";
 
 const input = readInput(path.resolve(__dirname, "input.txt"));
 
@@ -26,7 +26,7 @@ const ops = {
   [Gates.LSHIFT]: (x: number, y: number) => uint16.shl16(x, y),
 };
 
-class OperationGraph extends DirectedGraph {
+class OperationGraph extends Graph {
   constructor() {
     super();
   }

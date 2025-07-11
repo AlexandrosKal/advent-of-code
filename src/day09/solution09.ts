@@ -2,14 +2,14 @@
 
 import { readInput } from "../utils";
 import path from "path";
-import DirectedGraph, { Edge, GraphNode } from "../utils/graph";
+import Graph, { Edge, GraphNode } from "../utils/graph";
 
 const input = readInput(path.resolve(__dirname, "input.txt"));
 
 const NODES = new Map<string, GraphNode>();
 const EDGES = new Map<string, Edge>();
 
-class Day9Graph extends DirectedGraph {
+class Day9Graph extends Graph {
   private getEdgeWeight(from: string, to: string): number | undefined {
     return (
       this.edges.get(`${from}->${to}`)?.weight ??
